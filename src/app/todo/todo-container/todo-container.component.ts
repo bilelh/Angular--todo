@@ -9,7 +9,10 @@ import { Faire } from '../model/faire';
 export class TodoContainerComponent implements OnInit {
 
   todoList:Array<Faire> = [];
-  
+
+  addNewTache(title:string){
+    this.todoList = [ ...this.todoList , new Faire(this.todoList.length + 1 , title , false)]
+  }
   constructor() { }
 
   ngOnInit() {

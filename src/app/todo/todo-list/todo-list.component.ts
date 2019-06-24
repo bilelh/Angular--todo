@@ -11,6 +11,10 @@ export class TodoListComponent implements OnInit {
   @Input()
   taches:Array<Faire> ;
 
+  handleNewTache() {
+    
+  }
+
   constructor() { }
 
   ngOnInit() {
