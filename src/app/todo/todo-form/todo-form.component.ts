@@ -13,9 +13,16 @@ export class TodoFormComponent implements OnInit {
   @Output()
   newTache:EventEmitter<string> = new EventEmitter<string>();
 
+  @Output()
+  removeTache:EventEmitter<void> = new EventEmitter<void>();
+
   newTacheAdded() {
     this.newTache.emit(this.title);
     }
+
+  tacheRemoved() {
+    this.removeTache.emit();
+  }
 
   titleChanged(event) {
     this.title=event.target.value;

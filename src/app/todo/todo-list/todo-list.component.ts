@@ -11,8 +11,10 @@ export class TodoListComponent implements OnInit {
   @Input()
   taches:Array<Faire> ;
 
-  addeNewTache() {
-    
+  isEmpty() {
+    if(this.taches === []) {
+      return true
+    } else return false
   }
 
   constructor() { }

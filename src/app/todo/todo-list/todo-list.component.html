@@ -1,8 +1,9 @@
 
-
-<ul>
-  <li *ngFor="let tache of taches">
-    <app-todo-item [tache]="tache"></app-todo-item>
-  </li>
-</ul>
-
+<div *ngIf = "taches.length != 0 ; else message">
+  <ul>
+    <li *ngFor="let tache of taches">
+      <app-todo-item [tache]="tache"></app-todo-item>
+    </li>
+  </ul>
+</div>
+<ng-template #message><p>Vous n'avez aucun todo</p></ng-template>

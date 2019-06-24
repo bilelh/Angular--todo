@@ -14,16 +14,20 @@ export class TodoContainerComponent implements OnInit {
     this.todoList = [...this.todoList, new Faire(this.todoList.length + 1, title, false)];
   }
 
+  removeTaches() {
+    this.todoList = [];
+}
+
   constructor() { }
 
   ngOnInit() {
-    this.todoList = [
+    /* this.todoList = [
       new Faire(1, 'se reveiller', false),
       new Faire(2, 'manger', false),
-      // new Faire(3, 'boire', false),
-      // new Faire(4, 'jouer', false),
-      // new Faire(5, 'dormir', false)
-    ]
+      new Faire(3, 'boire', false),
+      new Faire(4, 'jouer', false),
+      new Faire(5, 'dormir', false)
+    ]  */
   }
 
 }
