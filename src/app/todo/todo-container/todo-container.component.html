@@ -1,8 +1,6 @@
-<p>
-  todo-container works!
-</p>
 
+
+<app-todo-form (newTache)="addNewTache($event)"></app-todo-form>
 
 <app-todo-list [taches] = "todoList"></app-todo-list>
 
-<app-todo-form (newTache)="addNewTache($event)"></app-todo-form>

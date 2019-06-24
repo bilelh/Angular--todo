@@ -11,12 +11,12 @@ export class TodoFormComponent implements OnInit {
   title:string;
 
   @Output()
-  newtache:EventEmitter<string> = new EventEmitter<string>();
+  newTache:EventEmitter<string> = new EventEmitter<string>();
 
   newTacheAdded() {
-    this.newtache.emit(this.title);
+    this.newTache.emit(this.title);
     }
-    
+
   titleChanged(event) {
     this.title=event.target.value;
   }
