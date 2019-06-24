@@ -1,0 +1,10 @@
+<p>
+  todo-list works!
+</p>
+
+
+<ul>
+  <li *ngFor="let tache of taches; index as i">
+    <app-todo-item [tache]="tache"></app-todo-item>
+  </li>
+</ul>
