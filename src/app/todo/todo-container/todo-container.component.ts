@@ -35,6 +35,5 @@ export class TodoContainerComponent implements OnInit {
         this.todoList = item
         console.log(this.todoList)
       })
-     
   }
 }
