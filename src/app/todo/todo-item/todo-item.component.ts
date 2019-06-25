@@ -8,7 +8,7 @@ import { Faire } from '../model/faire';
 })
 export class TodoItemComponent implements OnInit {
 
-  barre:string ;
+  private barre:string ;
 
   @Input()
   tache:Faire ;
@@ -18,6 +18,12 @@ export class TodoItemComponent implements OnInit {
 
   handleCheckbox() {
     this.check.emit(this.tache);
+    this.tache.isDone = !this.tache.isDone;
+    if(this.tache.isDone ===false) {
+      this.barre = 'none';
+    }else {
+      this.barre = 'line-through';
+    }
   }
 
   constructor() { }

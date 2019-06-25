@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Faire } from '../model/faire';
 import _ from 'lodash';
+import TodoServices from '../services/todoServices';
 
 @Component({
   selector: 'app-todo-container',
@@ -11,31 +12,29 @@ export class TodoContainerComponent implements OnInit {
 
   todoList: Array<Faire> = [];
 
+  constructor(private todoServices:TodoServices) { }
+
   addNewTache(title: string) {
-    this.todoList = [...this.todoList, new Faire(this.todoList.length + 1, title, false)];
+    this.todoServices.addNewTache(title)
+      .then((item) => {this.todoList = item})
   }
 
   removeTaches() {
-    this.todoList = [];
+    this.todoServices.removeTaches()
+      .then((item) => {this.todoList = item})
   }
 
   updateTache(tache:Faire) {
-    const update = this.todoList.find(t => t.id === tache.id);
-    update.isDone = !update.isDone;
-    console.log(update.isDone);
-    this.todoList =[..._.without(this.todoList, update) , update];
-    this.todoList.sort((a, b) => a.id - b.id);
+    this.todoServices.updateTache(tache)
+      .then((item) => {this.todoList = item})
   }
 
-  constructor() { }
-
   ngOnInit() {
-    this.todoList = [
-      new Faire(1, 'se reveiller', false),
-      new Faire(2, 'manger', false),
-      new Faire(3, 'boire', false),
-      new Faire(4, 'jouer', false),
-      new Faire(5, 'dormir', false)
-    ]
+    this.todoServices.getTache()
+      .then((item) => {
+        this.todoList = item
+        console.log(this.todoList)
+      })
+     
   }
 }
