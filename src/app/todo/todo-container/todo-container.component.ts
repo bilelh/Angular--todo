@@ -22,12 +22,11 @@ export class TodoContainerComponent implements OnInit {
   updateTache(tache:Faire) {
     const update = this.todoList.find(t => t.id === tache.id);
     update.isDone = !update.isDone;
-    console.log(update.isDone)
+    console.log(update.isDone);
     this.todoList =[..._.without(this.todoList, update) , update];
+    this.todoList.sort((a, b) => a.id - b.id);
   }
 
-
-  
   constructor() { }
 
   ngOnInit() {
