@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Faire } from '../model/faire';
+import _ from 'lodash';
 
 @Component({
   selector: 'app-todo-container',
@@ -16,18 +17,26 @@ export class TodoContainerComponent implements OnInit {
 
   removeTaches() {
     this.todoList = [];
-}
+  }
 
+  updateTache(tache:Faire) {
+    const update = this.todoList.find(t => t.id === tache.id);
+    update.isDone = !update.isDone;
+    console.log(update.isDone)
+    this.todoList =[..._.without(this.todoList, update) , update];
+  }
+
+
+  
   constructor() { }
 
   ngOnInit() {
-    /* this.todoList = [
+    this.todoList = [
       new Faire(1, 'se reveiller', false),
       new Faire(2, 'manger', false),
       new Faire(3, 'boire', false),
       new Faire(4, 'jouer', false),
       new Faire(5, 'dormir', false)
-    ]  */
+    ]
   }
-
 }

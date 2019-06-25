@@ -1,7 +1,8 @@
 
 
 <app-todo-form (newTache)="addNewTache($event)"
-            (removeTache)="removeTaches()"></app-todo-form>
+                (removeTache)="removeTaches()"></app-todo-form>
 
-<app-todo-list [taches] = "todoList"></app-todo-list>
+<app-todo-list [taches] = "todoList"
+                (checkChange)="updateTache($event)"></app-todo-list>
 

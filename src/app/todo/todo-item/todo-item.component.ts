@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Faire } from '../model/faire';
 
 @Component({
@@ -8,18 +8,16 @@ import { Faire } from '../model/faire';
 })
 export class TodoItemComponent implements OnInit {
 
+  barre:string ;
+
   @Input()
   tache:Faire ;
   
-  barre:string ;
+  @Output()
+  check:EventEmitter<Faire> = new EventEmitter<Faire>();
 
-  handleCheckBoxChange() {
-    this.tache.isDone = !this.tache.isDone;
-    if(this.tache.isDone ===false) {
-      this.barre = 'none';
-    }else {
-      this.barre = 'line-through';
-    }
+  handleCheckbox() {
+    this.check.emit(this.tache);
   }
 
   constructor() { }

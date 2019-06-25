@@ -2,7 +2,8 @@
 <div *ngIf = "taches.length != 0 ; else message">
   <ul>
     <li *ngFor="let tache of taches">
-      <app-todo-item [tache]="tache"></app-todo-item>
+      <app-todo-item [tache]="tache"
+      (check)="handleCheckChange($event)"></app-todo-item>
     </li>
   </ul>
 </div>
